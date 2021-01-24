@@ -48,9 +48,9 @@ export default {
       shoppingcart: [], //this array stores the lessons added to cart
     }
   },
- async created() {
-    const result = await fetch('/api/lessons')
-          .then(response => response.json())
+ async created() { //this is making a request for api/lessons.
+    const result = await fetch('/lessons')
+          .then(response => response.json()) //parsing the response
           .then(data => {
             console.log(data)
             return data

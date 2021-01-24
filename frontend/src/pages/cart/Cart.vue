@@ -68,18 +68,30 @@ export default {
           body: JSON.stringify({ name: "Fahad", phoneNumber: "07913113089" })
         }; */
 
-        const requestOptions = {
+        const requestOptions = { 
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ 
-            id: 999,
             name: this.name, 
             phoneNumber: this.phoneNumber,
             lessonId: this.cart[0].id,
             spaces: this.cart[0].places,
             })
         };
-        fetch("./api/orders", requestOptions)
+        fetch("/orders", requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+        //this is for putting the request
+        const updateoptions = { 
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            id:this.cart[0].id,
+            places: this.cart[0].places,
+            })
+        };
+        fetch("/lessons/update", updateoptions)
         .then(response => response.json())
         .then(data => console.log(data))
       //save data
