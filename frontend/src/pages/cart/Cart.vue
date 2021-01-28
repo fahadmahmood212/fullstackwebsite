@@ -78,7 +78,7 @@ export default {
             spaces: this.cart[0].places,
             })
         };
-        fetch("/orders", requestOptions)
+        fetch("https://fahadcst3145.herokuapp.com/orders", requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
 
@@ -91,7 +91,7 @@ export default {
             places: this.cart[0].places,
             })
         };
-        fetch("/lessons/update", updateoptions)
+        fetch("https://fahadcst3145.herokuapp.com/lessons/update", updateoptions)
         .then(response => response.json())
         .then(data => console.log(data))
       //save data

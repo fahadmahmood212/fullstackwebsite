@@ -49,7 +49,7 @@ export default {
     }
   },
  async created() { //this is making a request for api/lessons.
-    const result = await fetch('/lessons')
+    const result = await fetch('https://fahadcst3145.herokuapp.com/lessons')
           .then(response => response.json()) //parsing the response
           .then(data => {
             console.log(data)

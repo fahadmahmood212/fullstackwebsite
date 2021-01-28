@@ -8,6 +8,14 @@ const port = process.env.PORT || 3000
 // parses the json object included in the request body
 app.use(bodyParser.json()); 
 
+app.use(function(req, res, next) {
+  // allow different IP address
+  res.header("Access-Control-Allow-Origin","*");
+  // allow different header fields
+  res.header("Access-Control-Allow-Headers","*");
+  next();
+  });
+  
 // endpoint to view all lessons
 app.get('/lessons', async (req, res) => {
   const client = await MongoClient.connect(
