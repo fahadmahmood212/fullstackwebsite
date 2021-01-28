@@ -13,6 +13,9 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin","*");
   // allow different header fields
   res.header("Access-Control-Allow-Headers","*");
+  console.log("In comes a request to: " + request.url);
+  response.end("HERE I AM!!");
+
   next();
   });
 
