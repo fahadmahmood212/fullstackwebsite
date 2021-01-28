@@ -1,3 +1,6 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const express = require('express')
 import bodyParser from 'body-parser';
 var MongoClient = require('mongodb').MongoClient;
