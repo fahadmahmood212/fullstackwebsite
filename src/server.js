@@ -1,6 +1,6 @@
 const express = require('express')
 import bodyParser from 'body-parser';
-import { MongoClient } from 'mongodb';
+var MongoClient = require('mongodb').MongoClient;
 
 const app = express()
 const port = process.env.PORT || 3000
