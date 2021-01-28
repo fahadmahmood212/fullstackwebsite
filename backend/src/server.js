@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 // endpoint to view all lessons
 app.get('/lessons', async (req, res) => {
   const client = await MongoClient.connect(
-    'mongodb://127.0.0.1:27017',
+    'mongodb+srv://fahadmahmood:030064Fm@cluster0.ykjk6.mongodb.net/vuedb?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
   const db = client.db('vuedb');
@@ -20,10 +20,10 @@ app.get('/lessons', async (req, res) => {
   client.close();
 });
 
-// endpoint to view all orders
+// endpoint to view one orders
 app.get('/user', async (req, res) => {
   const client = await MongoClient.connect(
-    'mongodb://127.0.0.1:27017',
+    'mongodb+srv://fahadmahmood:030064Fm@cluster0.ykjk6.mongodb.net/vuedb?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
   const db = client.db('vuedb');
@@ -35,7 +35,7 @@ app.get('/user', async (req, res) => {
 // endpoint to view all orders
 app.get('/orders', async (req, res) => {
   const client = await MongoClient.connect(
-    'mongodb://127.0.0.1:27017',
+    'mongodb+srv://fahadmahmood:030064Fm@cluster0.ykjk6.mongodb.net/vuedb?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
   const db = client.db('vuedb');
@@ -48,7 +48,7 @@ app.get('/orders', async (req, res) => {
 app.post('/orders',async (req, res) => {
   // initiate DB connection
   const client = await MongoClient.connect(
-    'mongodb://127.0.0.1:27017/',
+    'mongodb+srv://fahadmahmood:030064Fm@cluster0.ykjk6.mongodb.net/vuedb?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }  );
   const db = client.db('vuedb');
   await db.collection('orders').insertOne({ 
@@ -62,38 +62,10 @@ app.post('/orders',async (req, res) => {
 });
 
 // endpoint for getting an order from a user
-app.post('/orders/user',async (req, res) => {
-  // initiate DB connection
-  const client = await MongoClient.connect(
-    'mongodb://127.0.0.1:27017/',
-    { useNewUrlParser: true, useUnifiedTopology: true }  );
-  const db = client.db('vuedb');
-  const orders = await db.collection('orders').find({ name: req.body.name, phoneNumber: req.body.phoneNumber }).toArray();
-  if (orders.length==0) {
-    res.status(404).json('Could not find client details!');
-}
-  res.status(200).json(orders);
-  client.close();
-});
-
-// endpoint for adding items to users cart 'post'
-app.post('/users/:userId/cart', (req, res) => {
-  // pulling this out of request body { productId: '123'}
-  const { productId }= req.body;
-  const product = products.find( product => product.id === productId);
-  if (product) {
-      cartItems.push(product);
-      res.status(200).json(cartItems);
-  } else {
-      res.status(404).json('Could not find product!');
-  }
-});
-
-// endpoint for getting an order from a user
 app.put('/lessons/update',async (req, res, next) => {
   // initiate DB connection
   const client = await MongoClient.connect(
-    'mongodb://127.0.0.1:27017/',
+    'mongodb+srv://fahadmahmood:030064Fm@cluster0.ykjk6.mongodb.net/vuedb?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }  );
   const db = client.db('vuedb');
   const lesson = await db.collection('lessons').updateOne(
