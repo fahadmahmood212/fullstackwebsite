@@ -1,21 +1,27 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const express = require('express')
 import bodyParser from 'body-parser';
-import { MongoClient } from 'mongodb';
+var MongoClient = require('mongodb').MongoClient;
 
 const app = express()
 const port = process.env.PORT || 3000
-
-// parses the json object included in the request body
-app.use(bodyParser.json()); 
 
 app.use(function(req, res, next) {
   // allow different IP address
   res.header("Access-Control-Allow-Origin","*");
   // allow different header fields
   res.header("Access-Control-Allow-Headers","*");
+  console.log("In comes a request to: " + request.url);
+  response.end("HERE I AM!!");
+
   next();
   });
-  
+
+// parses the json object included in the request body
+app.use(bodyParser.json()); 
+
 // endpoint to view all lessons
 app.get('/lessons', async (req, res) => {
   const client = await MongoClient.connect(
