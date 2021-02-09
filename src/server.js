@@ -8,6 +8,7 @@ var MongoClient = require('mongodb').MongoClient;
 const app = express()
 const port = process.env.PORT || 3000
 
+/*
 app.use(function(req, res, next) {
   // allow different IP address
   res.header("Access-Control-Allow-Origin","*");
@@ -18,6 +19,7 @@ app.use(function(req, res, next) {
 
   next();
   });
+*/
 
 // parses the json object included in the request body
 app.use(bodyParser.json()); 
